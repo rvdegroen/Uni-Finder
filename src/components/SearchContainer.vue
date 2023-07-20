@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const query = ref('')
+
 const handleSubmit = () => {
-  const test = console.log('test')
+  console.log(query.value)
+  query.value = ''
 }
 </script>
 
 <template>
   <div>
     <form @submit.prevent="handleSubmit">
-      <input type="text" name="query" />
+      <input type="text" v-model="query" placeholder="search for a university" />
       <button type="submit">Search</button>
     </form>
   </div>
