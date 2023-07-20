@@ -1,14 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const handleSubmit = () => {
+  const test = console.log('test')
+}
+</script>
 
 <template>
   <div>
-    <input type="text" />
-    <button>Search</button>
+    <form @submit.prevent="handleSubmit">
+      <input type="text" name="query" />
+      <button type="submit">Search</button>
+    </form>
   </div>
 </template>
 
 <style scoped>
-div {
+form {
   width: 100%;
   display: flex;
 }
@@ -44,5 +50,11 @@ button:hover {
   color: white;
   transition: 0.2s ease-in-out;
   background-color: #03b97d;
+}
+
+button:active {
+  color: white;
+  transition: 0.1s ease-in-out;
+  background-color: #028f60;
 }
 </style>
