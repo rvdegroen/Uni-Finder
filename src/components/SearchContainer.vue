@@ -16,9 +16,18 @@ div {
 input {
   width: 100%;
   padding: 5px 10px;
-  border: solid 1px white;
+  border: solid 2px white;
   border-radius: 5px 0 0 5px;
   font-size: 15px;
+}
+
+input:hover {
+  border: 2px #00bd7e solid;
+}
+
+input:focus {
+  border: 2px #00bd7e solid;
+  outline: none;
 }
 
 button {
