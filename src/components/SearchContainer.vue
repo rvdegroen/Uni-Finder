@@ -1,11 +1,24 @@
 <script setup lang="ts">
+import type { University } from '@/types'
 import { ref } from 'vue'
 
 const query = ref('')
 
-const handleSubmit = () => {
-  console.log(query.value)
+const handleSubmit = async () => {
+  // fetch input.value
+  const response = await fetch(`http://universities.hipolabs.com/search?name=${query.value}`)
+  const universities = await response.json()
+  console.log(universities)
+
+  // logging the number of universities
+  console.log(universities.length)
+
+  // empty input.value
   query.value = ''
+
+  // give universities a different type (not any: typescript thing) in type.ts
+  // types are always uppercase
+  return universities as University[]
 }
 </script>
 

@@ -3,7 +3,7 @@ import SearchContainer from './components/SearchContainer.vue'
 import UniResults from './components/UniResults.vue'
 import UniStats from './components/UniStats.vue'
 
-const title = 'Uni Finder'
+const title = 'University Finder'
 </script>
 
 <template>
