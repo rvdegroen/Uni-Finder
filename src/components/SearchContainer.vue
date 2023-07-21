@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import type { University } from '@/types'
 import { ref } from 'vue'
+// define emits so I can use it in app.vue with @updateUniversities
+const emit = defineEmits<{
+  updateUniversities: [universities: University[]]
+}>()
 
 const query = ref('')
 
 const handleSubmit = async () => {
   // fetch input.value
   const response = await fetch(`http://universities.hipolabs.com/search?name=${query.value}`)
-  const universities = await response.json()
+  // assign type to universities
+  const universities: University[] = await response.json()
   console.log(universities)
 
   // logging the number of universities
@@ -18,7 +23,10 @@ const handleSubmit = async () => {
 
   // give universities a different type (not any: typescript thing) in type.ts
   // types are always uppercase
-  return universities as University[]
+
+  // emit it, to use in the parent component
+  // emit (name of the event, what data I want to send, which is the universities)
+  emit('updateUniversities', universities)
 }
 </script>
 
